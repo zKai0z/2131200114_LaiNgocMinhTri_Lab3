@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
 import { Button } from 'react-native-paper';
 
-const Products = () => {
+const Products = ({ navigation }) => {
   const [data, setData] = useState([]);
   const filePath = 'https://dummyjson.com/products';
 
@@ -37,7 +37,13 @@ const Products = () => {
           <Text>Category: {item.category}</Text>
           <View style={styles.buttonContainer}>
             <Button mode="contained" style={styles.btnDetail}>DETAIL</Button>
-            <Button mode="contained" style={styles.btnAdd}>ADD</Button>
+            <Button
+              mode="contained"
+              style={styles.btnAdd}
+              onPress={() => navigation.navigate('Add')}
+            >
+              ADD
+            </Button>
             <Button mode="contained" style={styles.btnDelete}>DELETE</Button>
           </View>
         </View>
