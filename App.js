@@ -8,13 +8,13 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function App() {
   const [index, setIndex] = useState(0);
-  const [selectedProductId, setSelectedProductId] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
 
   const [routes] = useState([
     { key: 'ProductList', title: 'Products', focusedIcon: 'folder' },
-    { key: 'Product_Add', title: 'Add', focusedIcon: 'plus-box' },
-    { key: 'ProductSearch', title: 'Search', focusedIcon: 'magnify' },
-    { key: 'Product_Detail', title: 'Detail', focusedIcon: 'new-box' },
+    { key: 'Product_Add', title: 'Add', focusedIcon: 'folder' },
+    { key: 'ProductSearch', title: 'Search', focusedIcon: 'find' },
+    { key: 'Product_Detail', title: 'Detail', focusedIcon: 'calendar' },
   ]);
 
   const renderScene = ({ route }) => {
@@ -22,9 +22,9 @@ export default function App() {
       case 'ProductList':
         return (
           <ProductList
-            onSelectProduct={(id) => {
-              setSelectedProductId(id);
-              setIndex(3);
+            onNavigate={(tabIndex, productId) => {
+              setSelectedId(productId);
+              setIndex(tabIndex);
             }}
           />
         );
@@ -33,7 +33,7 @@ export default function App() {
       case 'ProductSearch':
         return <ProductSearch />;
       case 'Product_Detail':
-        return <Product_Detail productId={selectedProductId} />;
+        return <Product_Detail id={selectedId} />;
       default:
         return null;
     }
@@ -45,7 +45,6 @@ export default function App() {
         navigationState={{ index, routes }}
         onIndexChange={setIndex}
         renderScene={renderScene}
-        barStyle={{ backgroundColor: '#f4f2f7' }}
       />
     </SafeAreaProvider>
   );
