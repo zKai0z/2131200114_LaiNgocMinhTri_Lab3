@@ -11,10 +11,10 @@ export default function App() {
   const [selectedId, setSelectedId] = useState(null);
 
   const [routes] = useState([
-    { key: 'ProductList', title: 'Products', focusedIcon: 'folder' },
-    { key: 'Product_Add', title: 'Add', focusedIcon: 'folder' },
+    { key: 'ProductList', title: 'Products', focusedIcon: 'apps' },
+    { key: 'Product_Add', title: 'Add', focusedIcon: 'plus-box' },
     { key: 'ProductSearch', title: 'Search', focusedIcon: 'find' },
-    { key: 'Product_Detail', title: 'Detail', focusedIcon: 'calendar' },
+    { key: 'Product_Detail', title: 'Detail', focusedIcon: 'information' },
   ]);
 
   const renderScene = ({ route }) => {
